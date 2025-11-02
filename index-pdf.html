@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flujograma del Proceso de Mantenimiento</title>
+    <title>Flujograma - Con Escudo</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
         
@@ -21,7 +21,6 @@
             overflow-x: hidden;
         }
         
-        /* Aviones animados de fondo */
         .plane {
             position: absolute;
             font-size: 40px;
@@ -29,23 +28,16 @@
             animation: fly 20s linear infinite;
         }
         
-        .plane:nth-child(1) { top: 10%; animation-duration: 25s; animation-delay: 0s; }
+        .plane:nth-child(1) { top: 10%; animation-duration: 25s; }
         .plane:nth-child(2) { top: 30%; animation-duration: 30s; animation-delay: 5s; }
         .plane:nth-child(3) { top: 50%; animation-duration: 35s; animation-delay: 10s; }
         .plane:nth-child(4) { top: 70%; animation-duration: 28s; animation-delay: 15s; }
         
         @keyframes fly {
-            from {
-                left: -100px;
-                transform: translateX(0) rotate(-10deg);
-            }
-            to {
-                left: 100vw;
-                transform: translateX(0) rotate(-10deg);
-            }
+            from { left: -100px; }
+            to { left: 100vw; }
         }
         
-        /* Container principal */
         .container {
             position: relative;
             z-index: 10;
@@ -69,46 +61,55 @@
         }
         
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Header con logo/icono */
+        /* Logo/Escudo container */
         .header-icon {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #B8860B 0%, #DAA520 100%);
             border-radius: 50%;
             margin: 0 auto 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 50px;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 30px rgba(184, 134, 11, 0.4);
             animation: pulse 2s infinite;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Si usas imagen del escudo */
+        .logo-image {
+            width: 85%;
+            height: 85%;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+        
+        /* Si usas emoji o texto */
+        .logo-emoji {
+            font-size: 60px;
         }
         
         @keyframes pulse {
             0%, 100% {
                 transform: scale(1);
-                box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+                box-shadow: 0 10px 30px rgba(184, 134, 11, 0.4);
             }
             50% {
                 transform: scale(1.05);
-                box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+                box-shadow: 0 15px 40px rgba(218, 165, 32, 0.6);
             }
         }
         
         .badge {
             display: inline-block;
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
+            background: rgba(0, 102, 204, 0.15);
+            color: #0066CC;
             padding: 5px 15px;
             border-radius: 20px;
             font-size: 12px;
@@ -125,7 +126,7 @@
         }
         
         .subtitle {
-            color: #667eea;
+            color: #0066CC;
             font-size: 16px;
             font-weight: 600;
             margin-bottom: 35px;
@@ -133,44 +134,29 @@
             letter-spacing: 1px;
         }
         
-        /* Botón principal */
         .btn-primary {
             display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0066CC 0%, #004999 100%);
             color: white;
             text-decoration: none;
             padding: 20px 60px;
             border-radius: 50px;
             font-size: 18px;
             font-weight: 600;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.5);
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
         }
         
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-        
-        .btn-primary:hover::before {
-            left: 100%;
+        .btn-primary:hover {
+            box-shadow: 0 15px 40px rgba(0, 102, 204, 0.7);
         }
         
         .btn-primary:active {
             transform: scale(0.95);
         }
         
-        /* Footer */
         .footer {
             margin-top: 40px;
             padding-top: 25px;
@@ -181,58 +167,20 @@
         }
         
         .footer strong {
-            color: #667eea;
+            color: #0066CC;
             display: block;
             margin-bottom: 5px;
         }
         
-        /* Responsive */
         @media (max-width: 600px) {
-            .card {
-                padding: 40px 25px;
-            }
-            
-            h1 {
-                font-size: 24px;
-            }
-            
-            .subtitle {
-                font-size: 14px;
-            }
-            
-            .btn-primary {
-                padding: 18px 45px;
-                font-size: 16px;
-            }
-        }
-        
-        /* Loading animation */
-        .loading {
-            display: none;
-            margin-top: 15px;
-            color: #667eea;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        .loading.active {
-            display: block;
-        }
-        
-        .loading::after {
-            content: '.';
-            animation: dots 1.5s steps(4, end) infinite;
-        }
-        
-        @keyframes dots {
-            0%, 20% { content: '.'; }
-            40% { content: '..'; }
-            60%, 100% { content: '...'; }
+            .card { padding: 40px 25px; }
+            h1 { font-size: 24px; }
+            .subtitle { font-size: 14px; }
+            .btn-primary { padding: 18px 45px; font-size: 16px; }
         }
     </style>
 </head>
 <body>
-    <!-- Aviones de fondo -->
     <div class="plane">✈️</div>
     <div class="plane">✈️</div>
     <div class="plane">✈️</div>
@@ -242,43 +190,23 @@
         <div class="card">
             <div class="badge">APÉNDICE A-1</div>
             
-            <div class="header-icon">✈️</div>
+            <div class="header-icon">
+                <!-- Logo BAVE -->
+                <img src="BAVE.png" alt="Brigada de Aviación Ejército" class="logo-image">
+            </div>
             
             <h1>Flujograma del Proceso de Mantenimiento</h1>
-            
             <p class="subtitle">Proceso 3.2.12</p>
             
-            <a href="flujograma.pdf" class="btn-primary" id="viewBtn" target="_blank">
+            <a href="flujograma.pdf" class="btn-primary" target="_blank">
                 📄 Ver Flujograma
             </a>
             
-            <div class="loading" id="loading">Abriendo documento</div>
-            
             <div class="footer">
                 <strong>Trabajo de Titulación</strong>
-                Capitán (EJTO) Manuel Riquelme Riquelme
-                2025
+                Capitán (EJTO) Manuel Riquelme Riquelme 2025
             </div>
         </div>
     </div>
-    
-    <script>
-        const viewBtn = document.getElementById('viewBtn');
-        const loading = document.getElementById('loading');
-        
-        viewBtn.addEventListener('click', function(e) {
-            loading.classList.add('active');
-            
-            if (window.innerWidth < 768) {
-                setTimeout(() => {
-                    window.location.href = 'flujograma.pdf';
-                }, 800);
-            }
-            
-            setTimeout(() => {
-                loading.classList.remove('active');
-            }, 3000);
-        });
-    </script>
 </body>
 </html>

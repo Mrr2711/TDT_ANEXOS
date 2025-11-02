@@ -105,6 +105,17 @@
             }
         }
         
+        .badge {
+            display: inline-block;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
         h1 {
             color: #1a1a2e;
             font-size: 28px;
@@ -117,16 +128,9 @@
             color: #667eea;
             font-size: 16px;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 35px;
             text-transform: uppercase;
             letter-spacing: 1px;
-        }
-        
-        .description {
-            color: #666;
-            font-size: 15px;
-            line-height: 1.8;
-            margin-bottom: 35px;
         }
         
         /* Botón principal */
@@ -135,7 +139,7 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-decoration: none;
-            padding: 18px 50px;
+            padding: 20px 60px;
             border-radius: 50px;
             font-size: 18px;
             font-weight: 600;
@@ -166,71 +170,20 @@
             transform: scale(0.95);
         }
         
-        /* Información adicional */
-        .info-box {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 20px;
-            border-radius: 15px;
-            margin-top: 30px;
-            text-align: left;
-        }
-        
-        .info-box h3 {
-            color: #2c5364;
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .info-box ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .info-box li {
-            color: #555;
-            font-size: 14px;
-            padding: 8px 0;
-            padding-left: 25px;
-            position: relative;
-            line-height: 1.5;
-        }
-        
-        .info-box li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #667eea;
-            font-weight: bold;
-            font-size: 16px;
-        }
-        
         /* Footer */
         .footer {
-            margin-top: 30px;
-            padding-top: 20px;
+            margin-top: 40px;
+            padding-top: 25px;
             border-top: 2px solid #e0e0e0;
             color: #999;
             font-size: 13px;
+            line-height: 1.6;
         }
         
         .footer strong {
             color: #667eea;
-        }
-        
-        /* Badge de versión */
-        .badge {
-            display: inline-block;
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 20px;
+            display: block;
+            margin-bottom: 5px;
         }
         
         /* Responsive */
@@ -247,12 +200,8 @@
                 font-size: 14px;
             }
             
-            .description {
-                font-size: 14px;
-            }
-            
             .btn-primary {
-                padding: 16px 40px;
+                padding: 18px 45px;
                 font-size: 16px;
             }
         }
@@ -299,30 +248,14 @@
             
             <p class="subtitle">Proceso 3.2.12</p>
             
-            <p class="description">
-                Visualiza el flujograma completo del proceso de mantenimiento 
-                en formato PDF de alta resolución. Documento interactivo con 
-                capacidad de zoom para análisis detallado.
-            </p>
-            
             <a href="flujograma.pdf" class="btn-primary" id="viewBtn" target="_blank">
-                📄 Ver Flujograma Completo
+                📄 Ver Flujograma
             </a>
             
             <div class="loading" id="loading">Abriendo documento</div>
             
-            <div class="info-box">
-                <h3>📋 Características</h3>
-                <ul>
-                    <li>Formato PDF vectorial de alta calidad</li>
-                    <li>Zoom ilimitado sin pérdida de nitidez</li>
-                    <li>Compatible con todos los dispositivos</li>
-                    <li>Visualización optimizada para análisis</li>
-                </ul>
-            </div>
-            
             <div class="footer">
-                <strong>Trabajo de Titulación</strong><br>
+                <strong>Trabajo de Titulación</strong>
                 Capitán Manuel Riquelme Riquelme | 2025
             </div>
         </div>
@@ -333,24 +266,18 @@
         const loading = document.getElementById('loading');
         
         viewBtn.addEventListener('click', function(e) {
-            // Mostrar loading
             loading.classList.add('active');
             
-            // Auto-abrir en móviles después de animación
             if (window.innerWidth < 768) {
                 setTimeout(() => {
                     window.location.href = 'flujograma.pdf';
                 }, 800);
             }
             
-            // Ocultar loading después de 3 segundos
             setTimeout(() => {
                 loading.classList.remove('active');
             }, 3000);
         });
-        
-        // Analytics básico
-        console.log('📊 Página cargada:', new Date().toLocaleString());
     </script>
 </body>
 </html>

@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flujograma de Mantenimiento</title>
+    <title>Flujograma de Mantenimiento de Aviación</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
@@ -12,93 +14,343 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Aviones animados de fondo */
+        .plane {
+            position: absolute;
+            font-size: 40px;
+            opacity: 0.1;
+            animation: fly 20s linear infinite;
+        }
+        
+        .plane:nth-child(1) { top: 10%; animation-duration: 25s; animation-delay: 0s; }
+        .plane:nth-child(2) { top: 30%; animation-duration: 30s; animation-delay: 5s; }
+        .plane:nth-child(3) { top: 50%; animation-duration: 35s; animation-delay: 10s; }
+        .plane:nth-child(4) { top: 70%; animation-duration: 28s; animation-delay: 15s; }
+        
+        @keyframes fly {
+            from {
+                left: -100px;
+                transform: translateX(0) rotate(-10deg);
+            }
+            to {
+                left: 100vw;
+                transform: translateX(0) rotate(-10deg);
+            }
+        }
+        
+        /* Container principal */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
         }
         
-        .container {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 500px;
-            width: 100%;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 50px 40px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
             text-align: center;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Header con logo/icono */
+        .header-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+            }
         }
         
         h1 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 24px;
+            color: #1a1a2e;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.3;
         }
         
-        p {
+        .subtitle {
+            color: #667eea;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .description {
             color: #666;
-            margin-bottom: 30px;
-            line-height: 1.6;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 35px;
         }
         
-        .btn {
+        /* Botón principal */
+        .btn-primary {
             display: inline-block;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-decoration: none;
-            padding: 18px 40px;
+            padding: 18px 50px;
             border-radius: 50px;
             font-size: 18px;
-            font-weight: bold;
-            box-shadow: 0 8px 25px rgba(102,126,234,0.4);
-            transition: all 0.3s;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
             border: none;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
         
-        .btn:active {
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:active {
             transform: scale(0.95);
         }
         
-        .icon {
-            font-size: 48px;
+        /* Información adicional */
+        .info-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: left;
+        }
+        
+        .info-box h3 {
+            color: #2c5364;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .info-box li {
+            color: #555;
+            font-size: 14px;
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .info-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+            color: #999;
+            font-size: 13px;
+        }
+        
+        .footer strong {
+            color: #667eea;
+        }
+        
+        /* Badge de versión */
+        .badge {
+            display: inline-block;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
             margin-bottom: 20px;
         }
         
-        .info {
-            background: #f0f0f0;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
+        /* Responsive */
+        @media (max-width: 600px) {
+            .card {
+                padding: 40px 25px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .subtitle {
+                font-size: 14px;
+            }
+            
+            .description {
+                font-size: 14px;
+            }
+            
+            .btn-primary {
+                padding: 16px 40px;
+                font-size: 16px;
+            }
+        }
+        
+        /* Loading animation */
+        .loading {
+            display: none;
+            margin-top: 15px;
+            color: #667eea;
             font-size: 14px;
-            color: #666;
+            font-weight: 500;
+        }
+        
+        .loading.active {
+            display: block;
+        }
+        
+        .loading::after {
+            content: '.';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
         }
     </style>
 </head>
 <body>
+    <!-- Aviones de fondo -->
+    <div class="plane">✈️</div>
+    <div class="plane">✈️</div>
+    <div class="plane">✈️</div>
+    <div class="plane">✈️</div>
+    
     <div class="container">
-        <div class="icon">📄</div>
-        <h1>Flujograma del Proceso de Mantenimiento</h1>
-        <p>Visualice el flujograma completo en formato PDF de alta calidad</p>
-        
-        <a href="flujograma.pdf" class="btn" target="_blank">
-            📥 Ver Flujograma
-        </a>
-        
-        <div class="info">
-            El PDF se abrirá en una nueva pestaña. Puede hacer zoom para ver todos los detalles.
+        <div class="card">
+            <div class="badge">Versión 0.4</div>
+            
+            <div class="header-icon">✈️</div>
+            
+            <h1>Flujograma de Mantenimiento de Aviación</h1>
+            
+            <p class="subtitle">Proceso 3.2.12</p>
+            
+            <p class="description">
+                Visualiza el flujograma completo del proceso de mantenimiento 
+                en formato PDF de alta resolución. Documento interactivo con 
+                capacidad de zoom para análisis detallado.
+            </p>
+            
+            <a href="flujograma.pdf" class="btn-primary" id="viewBtn" target="_blank">
+                📄 Ver Flujograma Completo
+            </a>
+            
+            <div class="loading" id="loading">Abriendo documento</div>
+            
+            <div class="info-box">
+                <h3>📋 Características</h3>
+                <ul>
+                    <li>Formato PDF vectorial de alta calidad</li>
+                    <li>Zoom ilimitado sin pérdida de nitidez</li>
+                    <li>Compatible con todos los dispositivos</li>
+                    <li>Visualización optimizada para análisis</li>
+                </ul>
+            </div>
+            
+            <div class="footer">
+                Trabajo de <strong>Tesis</strong><br>
+                Mantenimiento de Aviación | 2025
+            </div>
         </div>
     </div>
     
     <script>
-        // Auto-abrir en dispositivos móviles
-        if (window.innerWidth < 768) {
+        const viewBtn = document.getElementById('viewBtn');
+        const loading = document.getElementById('loading');
+        
+        viewBtn.addEventListener('click', function(e) {
+            // Mostrar loading
+            loading.classList.add('active');
+            
+            // Auto-abrir en móviles después de animación
+            if (window.innerWidth < 768) {
+                setTimeout(() => {
+                    window.location.href = 'flujograma.pdf';
+                }, 800);
+            }
+            
+            // Ocultar loading después de 3 segundos
             setTimeout(() => {
-                window.location.href = 'flujograma.pdf';
-            }, 1000);
-        }
+                loading.classList.remove('active');
+            }, 3000);
+        });
+        
+        // Analytics básico
+        console.log('📊 Página cargada:', new Date().toLocaleString());
     </script>
 </body>
 </html>
